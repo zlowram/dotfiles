@@ -19,5 +19,5 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 compton &
-feh --bg-scale $HOME/structure_glow_points.jpg
+feh --bg-scale $HOME/wallpapers/structure_glow_points.jpg
 polybar example &
