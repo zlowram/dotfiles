@@ -119,3 +119,9 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+ctrl + alt + l
+	maim /tmp/lockscreen.png; \
+	convert /tmp/lockscreen.png -blur 0x5 /tmp/lockscreen_blur.png; \
+	slock -i /tmp/lockscreen_blur.png; \
+	rm /tmp/lockscreen*.png
