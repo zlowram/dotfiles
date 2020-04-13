@@ -120,8 +120,36 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Lockscreen
 ctrl + alt + l
 	maim /tmp/lockscreen.png; \
 	convert /tmp/lockscreen.png -blur 0x5 /tmp/lockscreen_blur.png; \
 	slock -i /tmp/lockscreen_blur.png; \
 	rm /tmp/lockscreen*.png
+
+# Autorandr
+ctrl + alt + s
+	autorandr --change; \
+	sleep 2; \
+	pkill -USR1 -x sxhkd
+
+# Volume
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Backlight
+XF86MonBrightness{Up,Down}
+	backlight {+,-}5%
+
+# Screenshots
+Print
+	maim | xclip -selection clipboard -t image/png
+
+shift + Print
+	maim -s | xclip -selection clipboard -t image/png
